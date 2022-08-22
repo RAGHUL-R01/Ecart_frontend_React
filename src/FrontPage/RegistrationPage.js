@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "../Css_files/login.css";
+import { useNavigate } from "react-router-dom";
 
 
 const RegistrationPage = () => {
+    let navigate = useNavigate();
     const [State_, Set_state_] = useState([{ User_name: "" }, { Password: "" }, { Phonenumber: "" }, { name: "" }]);
     const [Message, Set_message] = useState([{ Error_message: null }, { button_message: false }]);
     const [Password_visibility, Set_PV] = useState("Password");
@@ -49,6 +51,14 @@ const RegistrationPage = () => {
 
         // alert(Password_visibility)
     }
+    // Redirecting to loginpage
+    function Login_page_redirect(){
+        navigate("/login");
+    }
+    // Redirect to front page
+    function front_page_redirect(){
+        navigate("/Frontpage");
+    }
     return (
         <div className='cont_bg_reg'>
             <div className='Login_container'>
@@ -69,7 +79,7 @@ const RegistrationPage = () => {
                             <div className='button_t'><button className='Button_style' type='submit'>Submit</button></div>
                         </form>
 
-                        <div className='Close_btn'> <button className='Register_btn'>Already a User? Login</button><div>or</div><button className='Register_btn'>Skip</button> </div>
+                        <div className='Close_btn'> <button className='Register_btn' onClick={()=>Login_page_redirect()}>Already a User? Login</button><div>or</div><button className='Register_btn' onClick={()=>front_page_redirect()}>Skip</button> </div>
                     </div>
 
                 </div>

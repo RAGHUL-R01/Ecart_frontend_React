@@ -52,6 +52,19 @@
 .cart_cart_remove:focus{
     background-color: aqua;
 }
+
+.Welcome{
+    padding-top: 20px;
+    font-size: 150%;
+    font-family: 'Mogra', cursive;
+    color: rgb(79, 26, 26);
+    text-align: center;
+
+}
+.empty_msg{
+    text-align: center;
+    transform: translateY(210%);
+}
 @media all and (max-width: 600px) {
 
     .product_box1{

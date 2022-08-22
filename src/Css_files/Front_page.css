@@ -1,8 +1,19 @@
+
 .body_head {
     /* background-color: brown; */
     height: 100vh;
-}
+    /* overflow-y:scroll; */
 
+}
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .5);
+    /* -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5); */
+  }
 .Container_bar {
     display: grid;
     grid-template-rows: 1% 2% 3.1% auto;
@@ -105,8 +116,11 @@
     display: flex;
     justify-content: center;
     text-align: center;
+    color: black;
 }
-
+a:link{
+    text-decoration: none;
+}
 .GridArea1 {
     background-color: rgb(255, 0, 93);
     grid-area: third;
@@ -282,7 +296,6 @@
 }
 
 @media all and (max-width: 600px) {
-
     .Container_bar {
         display: grid;
         grid-template-rows: 1.5% 1.5% auto auto;
@@ -309,7 +322,7 @@
         /* position: fixed; */
     }
     .Company_name {
-        width: 10%;
+        width: 15%;
         font-size: 250%;
         margin-left: 10%;
     }
@@ -343,13 +356,19 @@
     }
     .nav_button2{
         transform: translateX(-100%);
-        width: 15%;
+        width: 20%;
+        height: 40%;
     }
     .catergory_cont {
         width: 100%;
         gap:5%;
         overflow: scroll;
     }
+      .catergory_cont::-webkit-scrollbar-thumb {
+        border-radius: 0px;
+        background-color: rgba(255, 255, 255, 0.5);
+        /* -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5); */
+      }
     .catergory_text {
        font-size: 150%;
        font-weight: 500;

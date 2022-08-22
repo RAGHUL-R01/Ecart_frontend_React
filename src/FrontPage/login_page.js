@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import "../Css_files/login.css";
+import { useNavigate } from "react-router-dom";
+
 const Login_page = () => {
-    // var Password_visibility = "Password";
+    let navigate = useNavigate();
     const [User_name, Set_user_name] = useState("");
     const [Password, Set_Password] = useState("");
     const [Message, Set_message] = useState([{ Error_message: null }, { button_message: false }]);
@@ -66,7 +68,7 @@ const Login_page = () => {
                             <div className='button_t'><button className='Button_style' type='submit'>Submit</button></div>
 
                         </form>
-                     <div className='Close_btn'> <button className='Register_btn'>New User? Create an account</button><div>or</div><button className='Register_btn'>Skip</button> </div> 
+                     <div className='Close_btn'> <button className='Register_btn' onClick={()=>navigate('/Register')}>New User? Create an account</button><div>or</div><button className='Register_btn' onClick={()=>navigate('/Frontpage')}>Skip</button> </div> 
                       </div>
                 </div>
             </div>

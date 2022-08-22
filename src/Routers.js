@@ -6,7 +6,6 @@ import Front_page from "./FrontPage/Front_page";
 import Cart from "./FrontPage/Cart";
 
 const Routers = () => {
-
     return (
         <div>
         <BrowserRouter>
@@ -14,8 +13,8 @@ const Routers = () => {
         <Route path="/" element={<Front_page/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/Register" element={<Register/>} />
-        <Route path="Frontpage" element={<Front_page/>} />
-        <Route path="cart" element={<Cart/>} />
+        <Route path="/Frontpage" element={<Front_page/>} />
+        <Route path="/cart" element={<Cart/>} />
         </Routes>
         </BrowserRouter>
         </div>)

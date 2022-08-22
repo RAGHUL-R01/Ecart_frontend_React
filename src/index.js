@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import RegistrationPage from './FrontPage/RegistrationPage';
-import Front_page from './FrontPage/Front_page';
-import Cart from "./FrontPage/Cart";
-import Login from "./FrontPage/login_page"
+// import RegistrationPage from './FrontPage/RegistrationPage';
+// import Front_page from './FrontPage/Front_page';
+// import Cart from "./FrontPage/Cart";
+// import Login from "./FrontPage/login_page"
 import reportWebVitals from './reportWebVitals';
 import Routers from './Routers';
 

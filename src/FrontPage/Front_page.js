@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Cart from './Cart';
-// import Login from "./login_page"
 import "../Css_files/Front_page.css";
+import { useNavigate } from "react-router-dom";
+
 
 const Front_page = () => {
+    let navigate = useNavigate();
     var Temp_value = [];
     const [image_index, Setindex] = useState(0);
     const [Api_index, Set_Apiindex] = useState([]);
@@ -46,14 +48,12 @@ const Front_page = () => {
                     </svg></button>
                 </div>
                 <div className='button_group'>
-                    <button className='nav_button'><strong><i>Login </i></strong></button>
+                    <button className='nav_button' onClick={() => navigate('/login')}><strong><i>Login </i></strong></button>
                     <button className='nav_button1'><strong><i>Stacks </i></strong></button>
-                    <button className='nav_button2'><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
-                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                    </svg></button>
+                    <button className='nav_button2' onClick={() => navigate('/cart')}><div>Cart</div></button>
                 </div>
             </header>
-            <section class="QuickLinksTab">
+            <section class="QuickLinksTab"><a href="#Section_bar">
                 <div className="catergory_cont">
                     <div><div><img class="category_images" src="https://rukminim1.flixcart.com/flap/128/128/image/f15c02bfeb02d15d.png?q=100" alt="custom_img" /></div><div className='catergory_text'>Top Offers</div></div>
                     <div><div><img class="category_images" src="https://rukminim1.flixcart.com/flap/128/128/image/29327f40e9c4d26b.png?q=100" alt="custom_img" /></div><div className='catergory_text'>Groceries</div></div>
@@ -64,44 +64,46 @@ const Front_page = () => {
                     <div><div><img class="category_images" src="https://rukminim1.flixcart.com/flap/128/128/image/0ff199d1bd27eb98.png?q=100" alt="custom_img" /></div><div className='catergory_text'>Appliances</div></div>
                     <div><div><img class="category_images" src="https://rukminim1.flixcart.com/flap/128/128/image/71050627a56b4693.png?q=100" alt="custom_img" /></div><div className='catergory_text'>Travel</div></div>
                     <div><div><img class="category_images" src="https://rukminim1.flixcart.com/flap/128/128/image/ab7e2b022a4587dd.jpg?q=100" alt="custom_img" /></div><div className='catergory_text'>Home</div></div>
-                </div>
+                </div> </a>
             </section>
             <section class="GridArea1">
                 <div className='Imge_area'><img class="Image_area" src={sliding_images[image_index]} alt="ads" /></div>
             </section>
             <section className='Grid_boxes'>
                 <div className='First_box'>
+
                     <div className='Header_grid_box'>Escape into the world of Gaming</div>
-                    <div className='body_grid_box'>
+                    <a href="#Section_bar"> <div className='body_grid_box'>
                         <div className='grid_content'>
                             <img className='grid_image1' src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/VGSW/Q2/372x232_DesktopQC_VG_1_1x._SY116_CB637347210_.jpg" alt="gamecontroller" /><div className='grid_fonts'>Contollers</div></div>
 
                         <div className='grid_content'>
                             <img className='grid_image1' src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/VGSW/Q2/372x232_DesktopQC_VG_2_1x._SY116_CB637347210_.jpg" alt="headphone" /><div className='grid_fonts'>Gaming Headphones</div></div>
                     </div>
-                    <div className='body_grid_box'>
-                        <div className='grid_content'>
-                            <img className='grid_image1' src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/VGSW/Q2/372x232_DesktopQC_VG_4_1x._SY116_CB637347210_.jpg" alt="ipad" /><div className='grid_fonts'>Streaming devices</div></div>
-                        <div className='grid_content'>
-                            <img className='grid_image1' src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/VGSW/Q2/372x232_DesktopQC_VG_3_1x._SY116_CB637347210_.jpg" alt="wheels" /><div className='grid_fonts'>Racing Wheels</div></div></div>
+                        <div className='body_grid_box'>
+                            <div className='grid_content'>
+                                <img className='grid_image1' src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/VGSW/Q2/372x232_DesktopQC_VG_4_1x._SY116_CB637347210_.jpg" alt="ipad" /><div className='grid_fonts'>Streaming devices</div></div>
+                            <div className='grid_content'>
+                                <img className='grid_image1' src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/VGSW/Q2/372x232_DesktopQC_VG_3_1x._SY116_CB637347210_.jpg" alt="wheels" /><div className='grid_fonts'>Racing Wheels</div></div></div>
+                    </a>
                 </div>
                 <div className='First_box1'>
                     <div className='Header_grid_box'>Up to 70% off | Clearance store</div>
-                    <div className='img_align_1'><img className='grid_image2' src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Electronics/Clearance/Clearance_store_Desktop_CC_1x._SY304_CB628315133_.jpg" alt="laptop" /></div>
-                </div>
+                    <a href="#Section_bar">  <div className='img_align_1'><img className='grid_image2' src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Electronics/Clearance/Clearance_store_Desktop_CC_1x._SY304_CB628315133_.jpg" alt="laptop" /></div>
+                    </a> </div>
                 <div className='First_box2'>
                     <div className='Header_grid_box'>Celebrating Indian Fashion</div>
-                    <div className='img_align_1'><img className='grid_image2' src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Events/ID22/PCCC/desktop_Category_Card_for_indie_style_1x._SY304_CB629238384_.jpg" alt="laptop" /></div>
-                </div>
+                    <a href="#Section_bar"><div className='img_align_1'><img className='grid_image2' src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Events/ID22/PCCC/desktop_Category_Card_for_indie_style_1x._SY304_CB629238384_.jpg" alt="laptop" /></div>
+                    </a>  </div>
                 <div className='First_box3'> <div className='Header_grid_box'>Up to 60% off | Styles for Women</div>
-                    <div className='img_align_1'><img className='grid_image2' src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Events/ID22/PCCC/desktop_Category_Card_for_indie_innovations_1x._SY304_CB629238384_.jpg" alt="laptop" /></div>
-                </div>
+                    <a href="#Section_bar"> <div className='img_align_1'><img className='grid_image2' src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Events/ID22/PCCC/desktop_Category_Card_for_indie_innovations_1x._SY304_CB629238384_.jpg" alt="laptop" /></div>
+                    </a>  </div>
             </section>
             <section className='products_flex'>
                 <div className='cont_title1'>Some of our top selling products:</div>
                 {Api_index.map(Result => {
                     return (
-                        <div className='product_box'>
+                        <div className='product_box' id="Section_bar">
                             <img className='product_images' src={Result.image} alt="stationary" />
                             <div className='product_desc'>
                                 <div className='cont_title'>{Result.title}</div>
@@ -124,7 +126,6 @@ const Front_page = () => {
                     <a href='#'><div className='privacy_condition'>Terms and Conditions</div></a>
                     <div className='the_end'> &copy; 2022, MoonKartz, Inc. or it's affiliates</div></div>
             </footer>
-            <Cart />
         </div>
     </div>)
 }
