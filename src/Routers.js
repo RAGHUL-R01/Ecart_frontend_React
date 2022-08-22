@@ -11,6 +11,7 @@ const Routers = () => {
         <div>
         <BrowserRouter>
         <Routes>
+        <Route path="/" element={<Front_page/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/Register" element={<Register/>} />
         <Route path="Frontpage" element={<Front_page/>} />
@@ -20,4 +21,4 @@ const Routers = () => {
         </div>)
 }
 
-export default Router;
+export default Routers;

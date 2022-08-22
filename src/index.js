@@ -6,11 +6,12 @@ import Front_page from './FrontPage/Front_page';
 import Cart from "./FrontPage/Cart";
 import Login from "./FrontPage/login_page"
 import reportWebVitals from './reportWebVitals';
+import Routers from './Routers';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RegistrationPage />
+    <Routers />
   </React.StrictMode>
 );
 
