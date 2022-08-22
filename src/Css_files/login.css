@@ -1,0 +1,141 @@
+.cont_bg {
+    background-image: url("https://wallpaperaccess.com/full/2412896.jpg");
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.Login_container {
+    /* margin-top: 10%; */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* height: fit-content;
+    width: max-content; */
+    justify-content: center;
+    align-items: center;
+    /* border: 5px solid red; */
+    /*  */
+    background-color: transparent;
+}
+
+.login_box {
+    height: fit-content;
+    width: fit-content;
+    /* border: 2px solid greenyellow; */
+    backdrop-filter: blur(5px);
+    padding: 1% 5%;
+    /* background-color: aqua; */
+}
+
+.Login_text {
+    padding: 5%;
+    text-align: center;
+    font-family: 'Courgette', cursive;
+    font-size: x-large;
+    font-weight: 600;
+    color: white;
+    /* font-family: 'Questrial', sans-serif; */
+    /* font-family: 'Raleway', sans-serif; */
+}
+
+.Username,
+.Password {
+    margin-top: 5%;
+    /* font-style: italic; */
+    font-family: 'Courgette', cursive;
+}
+
+.input_box {
+    margin: 5px 0;
+    border-radius: 5px;
+    width: 250px;
+    padding: 2% 5%;
+}
+
+.input_box:focus {
+    outline: 0 none;
+}
+
+.show_pass {
+    font-size: medium;
+    margin: 5%;
+}
+
+.show_pass_box {
+    padding: 10px;
+    background-color: aqua;
+}
+
+.button_t,
+.Register_btn {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.Button_style {
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(15, 174, 18);
+    border: none;
+    padding: 5px 10px;
+    font-weight: 500;
+}
+
+.Close_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: small;
+    font-weight: 800;
+    font-style: italic;
+}
+
+.Register_btn {
+    background-color: transparent;
+    color: white;
+    border: none;
+    margin: 5% 0;
+    font-style: italic;
+    /* text-align: end; */
+}
+
+.Register_btn:focus {
+    transform: scale(120%);
+}
+
+/* Registration Page CSS */
+
+.cont_bg_reg{
+
+   /* background-image:url(""); */
+   background-image: linear-gradient(to right top, #1a9f8e, #0092b0, #0080e3, #0064ff, #1712eb);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+
+
+
+
+
+
+
+@media all and (max-width: 600px) {
+
+
+.cont_bg_reg {
+    background-image: url("https://w0.peakpx.com/wallpaper/423/587/HD-wallpaper-sebastian-vettel-champion-formula-1-red-bull.jpg");
+    /* background-image: url("https://wallpaperaccess.com/full/2412896.jpg"); */
+
+}
+
+}
