@@ -1,49 +1,56 @@
 import React, { useState } from "react";
 import "../Css_files/login.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 
 const RegistrationPage = () => {
     let navigate = useNavigate();
-    const [State_, Set_state_] = useState([{ User_name: "" }, { Password: "" }, { Phonenumber: "" }, { name: "" }]);
+    const [State_, Set_state_] = useState([{ User_name: "", Password: "", Contact: "", name: "" }]);
     const [Message, Set_message] = useState([{ Error_message: null }, { button_message: false }]);
     const [Password_visibility, Set_PV] = useState("Password");
-    const formSubmit = (e) => {
-        e.preventDefault();
-        if (State_.User_name === "" || State_.Password === "") {
-            Set_message({ Error_message: "User Name or Password should not be empty" });
-            alert(Message.Error_message);
-        }
-        else if (State_.User_name.length < 5 || State_.User_name.length > 13) { alert("Username must have greater than 5 characters") }
-        else if (State_.Password.length < 5 || State_.Password.length > 13) { alert("Password must have greater than 5 characters") }
-        else if (Message.button_message == true) {
-            alert("no");
-        }
-        else {
-            alert(Message.Error_message);
-            Set_message("Some error accured")
-        }
+    function regex(text) {
+        if ((text.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) || text.match(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/)) return false;
+        else return true;
     }
-    const user_name_verify = (e) => {
-        let user_name_ = e.target.value;
-        Set_state_({ User_name: e.target.value });
-        if (user_name_.match(/[A-Za-z0-9]*[^\s]{5,12}/s)) {
-            Set_message({ button_message: true });
+    const formSubmit = (event) => {
+        event.preventDefault();
+        // console.log(State_.User_name)
+        // console.log(State_.Password)
+        // console.log(State_.Phonenumber)
+        // console.log(State_.name)
+        if (State_.User_name === undefined || State_.Password === undefined || State_.Contact === undefined || State_.name === undefined) {
+            // Set_message({ Error_message: "All fields are Mandatory" });
+            alert("All fields are Mandatory");
         }
         else {
-            Set_message({ Error_message: "Please check your User Name", button_message: true });
+            if (State_["User_name"].length < 5 || State_.User_name.length > 13) { alert("Username must have greater than 5 characters") }
+            else if (State_.Password.length < 5 || State_.Password.length > 13) { alert("Password must have greater than 5 characters") }
+            else if (regex(State_.Contact)) alert(State_.Contact + " is not a valid Email or Phonenumber")
+            else {
+                // alert("no")
+                let data_post = { UserName: State_.User_name, 
+                    Password: State_.Password, Contact: State_.Contact, 
+                    address: State_.name }
+
+                axios.post(" https://moonkart-bk.herokuapp.com/login", data_post)
+                    .then(res => 
+                        alert(res.data)
+                        // console.log(res)
+                    )
+                    .catch(err => {
+                        // if (err.response.status === 403) alert("User name has already taken");
+                        // if (err.response.status === 400) alert("Mail Id or Phonenumber is already Existing");
+                        // else alert("Server Busy!!");
+                        // console.log(1+err.response)
+                        // console.log(2+err.response.status)
+                        // console.log(err)
+                        alert(err.response.data)
+                    })
+            }
         }
 
-    }
-    const Password_verify = (e) => {
-        let Password_ = e.target.value;
-        Set_state_({ Password: e.target.value });
-        if (Password_.match(/[A-Za-z0-9]*[^\s]{5,12}/s)) {
-            Set_message({ button_message: true });
-        }
-        else {
-            Set_message({ Error_message: "Please check your Password", button_message: true });
-        }
+        // https://moonkart-bk.herokuapp.com/login
     }
     function Password_func() {
         if (Password_visibility == "Password") Set_PV("text");
@@ -52,11 +59,11 @@ const RegistrationPage = () => {
         // alert(Password_visibility)
     }
     // Redirecting to loginpage
-    function Login_page_redirect(){
+    function Login_page_redirect() {
         navigate("/login");
     }
     // Redirect to front page
-    function front_page_redirect(){
+    function front_page_redirect() {
         navigate("/Frontpage");
     }
     return (
@@ -66,20 +73,21 @@ const RegistrationPage = () => {
 
                     <div>
                         <div className='Login_text'>Register</div>
-                        <form onSubmit={formSubmit}>
-                            <div> <label className='Username' id="Username">Name</label></div>
-                            <div><input className='input_box' type="text" id="Username" name="User_name" value={State_.name} onChange={(e) => State_.name({ name: e.target.value })} /></div>
-                            <div> <label className='Username' id="Username">Phonenumber or e-mail</label></div>
-                            <div><input className='input_box' type="text" id="Username" name="User_name" value={State_.Phonenumber} onChange={(e) => State_.name({ Phonenumber: e.target.value })} /></div>
+                        <form onSubmit={formSubmit} onKeyPress={(e) => e.key === "Enter" && formSubmit()}>
                             <div> <label className='Username' id="Username">Username</label></div>
-                            <div><input className='input_box' type="text" id="Username" name="User_name" value={State_.User_name} onChange={user_name_verify} /></div>
+                            <div><input className='input_box' type="text" id="Username" name="User_name" value={State_.User_name || ""} onChange={(e) => Set_state_({ ...State_, User_name: e.target.value })} /></div>
                             <div> <label className='Password' id="Password">Password</label></div>
-                            <div><input className='input_box' type={Password_visibility} id="Password" name="Password" value={State_.Password} onChange={Password_verify} /></div>
+                            <div><input className='input_box' type={Password_visibility} id="Password" name="Password" value={State_.Password || ""} onChange={(e) => Set_state_({ ...State_, Password: e.target.value })} /></div>
+
+                            <div> <label className='Username' id="mail">Phonenumber or e-mail</label></div>
+                            <div><input className='input_box' type="text" id="mail" name="mail" value={State_.Contact || ""} onChange={(e) => Set_state_({ ...State_, Contact: e.target.value })} /></div>
+                            <div> <label className='Username' id="name">Delivery Address</label></div>
+                            <div><textarea className='input_box' type="text" id="name" name="name" value={State_.name || ""} onChange={(e) => Set_state_({ ...State_, name: e.target.value })} /></div>
                             <div className='show_pass'><input className='show_pass_box' type="checkbox" onClick={Password_func} /> Show Password</div>
                             <div className='button_t'><button className='Button_style' type='submit'>Submit</button></div>
                         </form>
 
-                        <div className='Close_btn'> <button className='Register_btn' onClick={()=>Login_page_redirect()}>Already a User? Login</button><div>or</div><button className='Register_btn' onClick={()=>front_page_redirect()}>Skip</button> </div>
+                        <div className='Close_btn'> <button className='Register_btn' onClick={() => Login_page_redirect()}>Already a User? Login</button><div>or</div><button className='Register_btn' onClick={() => front_page_redirect()}>Skip</button> </div>
                     </div>
 
                 </div>
